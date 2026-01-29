@@ -1,13 +1,15 @@
 export class Board {
   width;
   height;
+  board = [];
 
   constructor(width, height) {
     this.width = width;
     this.height = height;
+    this.board = Array(height).fill(Array(width).fill("."));
   }
 
   toString() {
-    return (`...\n...\n...\n`);
+    return this.board.map((row) => row.join("")).join("\n") + "\n";
   }
 }
