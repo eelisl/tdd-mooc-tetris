@@ -2,6 +2,7 @@ export class Board {
   width;
   height;
   board = [];
+  empty = ".";
   fallingBlock = null;
 
   constructor(width, height) {
@@ -30,7 +31,7 @@ export class Board {
   }
 
   createRow() {
-    return Array(this.width).fill(".");
+    return Array(this.width).fill(this.empty);
   }
 
   createRowWithBlock() {
@@ -46,7 +47,7 @@ export class Board {
 
   checkCollision() {
     return this.isAtBottom() ||
-      this.board[this.fallingBlock.y + 1][this.fallingBlock.x] !== ".";
+      this.board[this.fallingBlock.y + 1][this.fallingBlock.x] !== this.empty;
   }
 
   tick() {
