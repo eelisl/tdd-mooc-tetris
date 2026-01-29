@@ -6,7 +6,11 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.board = Array(height).fill(Array(width).fill("."));
+    this.board = Array(height).fill(this.createRow());
+  }
+
+  createRow() {
+    return Array(this.width).fill(".");
   }
 
   toString() {
