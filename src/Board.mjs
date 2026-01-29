@@ -11,6 +11,9 @@ export class Board {
   }
 
   createFallingBlock(block) {
+    if (this.fallingBlock) {
+      throw new Error("already falling");
+    }
     this.fallingBlock = {
       x: Math.floor(this.width / 2),
       y: 0,
