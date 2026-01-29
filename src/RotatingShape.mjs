@@ -1,9 +1,11 @@
 export class RotatingShape {
+    initialShape = [];
     shape = [];
 
     constructor(shape) {
         const rows = shape.replace(/\s+/g, "\n").split("\n");
         this.shape = rows.map(row => row.split(""));
+        this.initialShape = this.shape
     }
 
     static fromString(shape) {
@@ -11,7 +13,7 @@ export class RotatingShape {
     }
 
     rotateRight() {
-        const rotatedShape = this.shape.map((row, index) => {
+        const rotatedShape = this.initialShape.map((row, index) => {
             return row.map((_, i) => {
                 return this.shape[this.shape.length - 1 - i][index];
             });
