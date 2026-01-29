@@ -22,6 +22,16 @@ export class RotatingShape {
         return this;
     }
 
+    rotateLeft() {
+        const rotatedShape = this.initialShape.map((row, index) => {
+            return row.map((_, i) => {
+                return this.initialShape[i][this.initialShape.length - 1 - index];
+            });
+        })
+        this.shape = rotatedShape;
+        return this;
+    }
+
     toString() {
         return this.shape.map(row => row.join("")).join("\n") + "\n";
     }
