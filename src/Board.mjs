@@ -21,6 +21,10 @@ export class Board {
     };
   }
 
+  hasFalling() {
+    return this.fallingBlock !== null;
+  }
+
   createRow() {
     return Array(this.width).fill(".");
   }
