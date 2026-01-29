@@ -29,7 +29,7 @@ export class RotatingShape {
     rotateLeft() {
         const rotatedShape = this.shape.map((row, index) => {
             return row.map((_, i) => {
-                return this.shape[i][this.shape.length - 1 - index];
+                return this.shape[i][index];
             });
         })
         this.shape = rotatedShape;
