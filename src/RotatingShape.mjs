@@ -6,4 +6,12 @@ export class RotatingShape {
         this.shape = rows.map(row => row.split(""));
     }
 
+    static fromString(shape) {
+        return new RotatingShape(shape);
+    }
+
+    toString() {
+        return this.shape.map(row => row.join("")).join("\n") + "\n";
+    }
+
 }
