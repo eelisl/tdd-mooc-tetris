@@ -25,6 +25,10 @@ export class Board {
     return this.fallingBlock !== null;
   }
 
+  isAtBottom() {
+    return this.fallingBlock.y === this.height - 1;
+  }
+
   createRow() {
     return Array(this.width).fill(".");
   }
@@ -42,6 +46,10 @@ export class Board {
 
   tick() {
     if (this.fallingBlock) {
+      if (this.isAtBottom()) {
+        this.fallingBlock = null;
+        return;
+      }
       // empty the current row
       this.board[this.fallingBlock.y] = this.createRow();
       // move the block position down one row
