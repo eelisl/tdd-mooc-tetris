@@ -44,9 +44,14 @@ export class Board {
     this.board[0] = this.createRowWithBlock();
   }
 
+  checkCollision() {
+    return this.isAtBottom() ||
+      this.board[this.fallingBlock.y + 1][this.fallingBlock.x] !== ".";
+  }
+
   tick() {
     if (this.fallingBlock) {
-      if (this.isAtBottom()) {
+      if (this.checkCollision()) {
         this.fallingBlock = null;
         return;
       }
