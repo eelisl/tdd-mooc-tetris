@@ -22,6 +22,12 @@ export class Board {
     return Array(this.width).fill(".");
   }
 
+  createRowWithBlock(block) {
+    let row = this.createRow();
+    row[this.fallingBlock.x] = this.fallingBlock.block;
+    return row;
+  }
+
   drop(block) {
     let row = this.createRow();
     row[Math.floor(this.width / 2)] = block;
