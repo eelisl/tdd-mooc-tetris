@@ -1,19 +1,23 @@
 export class RotatingShape {
-    initialShape = [];
     shape = [];
 
     constructor(shape) {
         const rows = shape.replace(/\s+/g, "\n").split("\n");
         this.shape = rows.map(row => row.split(""));
-        this.initialShape = this.shape
     }
 
     static fromString(shape) {
         return new RotatingShape(shape);
     }
 
+    copy() {
+        const copy = new RotatingShape("");
+        copy.shape = this.shape.map(row => [...row]);
+        return copy;
+    }
+
     rotateRight() {
-        const rotatedShape = this.initialShape.map((row, index) => {
+        const rotatedShape = this.shape.map((row, index) => {
             return row.map((_, i) => {
                 return this.shape[this.shape.length - 1 - i][index];
             });
@@ -23,9 +27,9 @@ export class RotatingShape {
     }
 
     rotateLeft() {
-        const rotatedShape = this.initialShape.map((row, index) => {
+        const rotatedShape = this.shape.map((row, index) => {
             return row.map((_, i) => {
-                return this.initialShape[i][this.initialShape.length - 1 - index];
+                return this.shape[i][this.shape.length - 1 - index];
             });
         })
         this.shape = rotatedShape;

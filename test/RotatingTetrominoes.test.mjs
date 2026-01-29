@@ -1,11 +1,11 @@
-import { describe, test } from "vitest";
+import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 import { Tetromino } from "../src/Tetromino.mjs";
 
 function distinctOrientations(shape) {
   const distinct = new Set();
-  let goingRight = shape;
-  let goingLeft = shape;
+  let goingRight = shape.copy();
+  let goingLeft = shape.copy();
   for (let i = 0; i < 10; i++) {
     distinct.add(goingRight.toString());
     goingRight = goingRight.rotateRight();
@@ -16,7 +16,11 @@ function distinctOrientations(shape) {
 }
 
 describe("The T shape", () => {
-  const shape = Tetromino.T_SHAPE;
+  let shape = Tetromino.T_SHAPE;
+
+  beforeEach(() => {
+    shape = Tetromino.T_SHAPE;
+  });
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
