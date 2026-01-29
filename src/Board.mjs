@@ -33,6 +33,16 @@ export class Board {
     this.board[0] = this.createRowWithBlock();
   }
 
+  tick() {
+    if (this.fallingBlock) {
+      // empty the current row
+      this.board[this.fallingBlock.y] = this.createRow();
+      // move the block position down one row
+      this.fallingBlock.y++;
+      // update the next row with the block
+      this.board[this.fallingBlock.y] = this.createRowWithBlock();
+    }
+  }
   toString() {
     return this.board.map((row) => row.join("")).join("\n") + "\n";
   }
