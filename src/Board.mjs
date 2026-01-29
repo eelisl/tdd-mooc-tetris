@@ -22,16 +22,15 @@ export class Board {
     return Array(this.width).fill(".");
   }
 
-  createRowWithBlock(block) {
+  createRowWithBlock() {
     let row = this.createRow();
     row[this.fallingBlock.x] = this.fallingBlock.block;
     return row;
   }
 
   drop(block) {
-    let row = this.createRow();
-    row[Math.floor(this.width / 2)] = block;
-    this.board[0] = row;
+    this.createFallingBlock(block);
+    this.board[0] = this.createRowWithBlock();
   }
 
   toString() {
